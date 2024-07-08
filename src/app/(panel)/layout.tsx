@@ -1,9 +1,9 @@
-import { NavigationBar } from '@/components/navigation-bar/navigation-bar';
+import { NavBar } from '@/components/nav-bar/nav-bar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen min-w-screen flex">
-      <NavigationBar />
+      <NavBar />
       {children}
     </div>
   );

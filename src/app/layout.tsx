@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { ViewTransitions } from 'next-view-transitions';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['700', '600', '400'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +21,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={`${inter.className} bg-neutral-00`}>{children}</body>
+        <body className={`${poppins.className} bg-neutral-00 font-normal`}>{children}</body>
       </html>
     </ViewTransitions>
   );
