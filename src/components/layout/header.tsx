@@ -1,11 +1,11 @@
 import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 type Props = {
-  children: React.ReactNode;
   isOpen: boolean;
 };
 
-export const Header = ({ children, isOpen }: Props) => {
+export const Header = ({ isOpen }: Props) => {
   return (
     <div className="h-[72px]">
       <div className="fixed h-[72px] shadow-xl left-0 right-0"></div>
@@ -15,13 +15,25 @@ export const Header = ({ children, isOpen }: Props) => {
           isOpen ? 'left-[224px]' : 'left-[72px]',
         )}
       >
-        <div>
-          {children}
-        </div>
+        <Item />
         <div className="whitespace-nowrap">
           Nombre apellido apellido
         </div>
       </div>
     </div>
+  );
+};
+
+const Item = () => {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/components')) {
+    return (
+      <h4 className="font-bold text-primary-600">Components</h4>
+    );
+  }
+
+  return (
+    <h4 className="font-bold text-primary-600">{pathname}</h4>
   );
 };
