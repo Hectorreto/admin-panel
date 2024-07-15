@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - '${DATABASE_PORT}:${DOCKER_DB_PORT}'
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - '${LOCAL_PGA_PORT}:${DOCKER_PGA_PORT}'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${DOCKER_PGA_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DOCKER_PGA_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - 'db:pgsql-server'
+
+volumes:
+  db-data:
+  pgadmin-data:
