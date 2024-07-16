@@ -21,7 +21,7 @@ const Page = () => {
     <main className="w-screen h-screen flex">
       <div className="flex-1 bg-neutral-500"></div>
       <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-center items-center gap-4">
-        <h1>¡Bienvenido!</h1>
+        <h1 className="text-primary-primary">¡Bienvenido!</h1>
 
         <div className="flex flex-col gap-1">
           <label htmlFor="email">Email</label>

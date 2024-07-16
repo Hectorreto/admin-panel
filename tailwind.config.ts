@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-const Colors = {
+export const Colors = {
   primary: {
     primary: '#6344AD',
     50: '#F0ECFA',
@@ -41,8 +41,8 @@ const Colors = {
     '900': '#232129',
   },
   alert: {
-    green: '#FBFBFB',
-    red: '#F2EFF8',
+    green: '#80D373',
+    red: '#960200',
   },
   chart: {
     A: '#F8A07B',
