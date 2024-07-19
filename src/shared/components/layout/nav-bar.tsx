@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 import { NavItem } from './nav-item';
 import logo from '@/assets/logo.png';
 import Image from 'next/image';
-import { logout } from '@/actions/user/logout';
-import { Colors } from '../../../tailwind.config';
+import { logout } from '@/shared/actions/user/logout';
+import { Colors } from '../../../../tailwind.config';
 
 type Props = {
   isOpen: boolean;

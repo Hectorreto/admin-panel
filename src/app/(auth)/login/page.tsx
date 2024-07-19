@@ -1,6 +1,6 @@
 'use client';
 
-import { authenticate } from '@/actions/user/authenticate';
+import { authenticate } from '@/shared/actions/user/authenticate';
 import { useState } from 'react';
 
 const Page = () => {

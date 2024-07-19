@@ -4,7 +4,7 @@
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
-import { User } from '@/definitions/user';
+import { User } from '@/shared/core/user';
 import { sql } from '@/utils/db';
 
 export const updateUserStatus = async (id: string, active: boolean) => {

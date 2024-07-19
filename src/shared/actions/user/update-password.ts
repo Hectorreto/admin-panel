@@ -1,7 +1,7 @@
 'use server';
 
 import { sql } from '@/utils/db';
-import { User } from '@/definitions/user';
+import { User } from '@/shared/core/user';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import bcrypt from 'bcrypt';

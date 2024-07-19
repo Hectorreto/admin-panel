@@ -1,8 +1,8 @@
 'use server';
 
 import { sql } from '@/utils/db';
-import { User } from '@/definitions/user';
-import { PasswordRecovery } from '@/definitions/password-recovery';
+import { User } from '@/shared/core/user';
+import { PasswordRecovery } from '@/shared/core/password-recovery';
 import { z } from 'zod';
 import { signIn } from '@/auth';
 import { redirect } from 'next/navigation';

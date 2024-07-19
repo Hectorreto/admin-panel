@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Colors } from '../../../tailwind.config';
+import { Colors } from '../../../../tailwind.config';
 
 type Props = {
   value: boolean;

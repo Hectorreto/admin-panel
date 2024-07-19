@@ -20,10 +20,21 @@ export const authConfig = {
       }
 
       // Redirect authenticated users to dashboard
-      const invalidRoutes = ['/login'];
-      const isCurrentRouteValid = !invalidRoutes.some((route) => nextUrl.pathname.startsWith(route));
-      if (!isCurrentRouteValid) {
-        return Response.redirect(new URL('/dashboard', nextUrl));
+      // const invalidRoutes = ['/login'];
+      if (auth.user.role === 'algo') {
+        const validRoutes = ['/dashboard', '/users'];
+        const isCurrentRouteValid = !validRoutes.some((route) => nextUrl.pathname.startsWith(route));
+        if (!isCurrentRouteValid) {
+          return Response.redirect(new URL('/dashboard', nextUrl));
+        }
+      }
+
+      if (auth.user.role === 'algo') {
+        const validRoutes = ['/dashboard', '/users'];
+        const isCurrentRouteValid = !validRoutes.some((route) => nextUrl.pathname.startsWith(route));
+        if (!isCurrentRouteValid) {
+          return Response.redirect(new URL('/dashboard', nextUrl));
+        }
       }
 
       return true;
