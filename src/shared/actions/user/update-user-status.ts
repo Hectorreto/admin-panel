@@ -1,10 +1,9 @@
 'use server';
 
-// import { sql } from '@/database/db';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/auth';
-import { User } from '@/shared/core/user';
+import { auth } from '../../../auth';
+import { User } from '@/core/user';
 import { sql } from '@/utils/db';
 
 export const updateUserStatus = async (id: string, active: boolean) => {

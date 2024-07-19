@@ -1,10 +1,10 @@
 'use server';
 
 import { sql } from '@/utils/db';
-import { User } from '@/shared/core/user';
-import { PasswordRecovery } from '@/shared/core/password-recovery';
+import { User } from '@/core/user';
+import { PasswordRecovery } from '@/core/password-recovery';
 import { z } from 'zod';
-import { signIn } from '@/auth';
+import { signIn } from '../../../auth';
 import { redirect } from 'next/navigation';
 import bcrypt from 'bcrypt';
 

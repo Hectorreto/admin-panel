@@ -1,11 +1,11 @@
 'use server';
 
 import { sql } from '@/utils/db';
-import { User } from '@/shared/core/user';
+import { User } from '@/core/user';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
-import { auth } from '@/auth';
+import { auth } from '../../../auth';
 
 export const updatePassword = async (oldPassword: string, newPassword: string) => {
   try {

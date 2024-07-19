@@ -1,7 +1,7 @@
 'use client';
 
-import { Header } from '@/shared/components/layout/header';
-import { NavBar } from '@/shared/components/layout/nav-bar';
+import { Header } from '@/components/layout/header';
+import { NavBar } from '@/components/layout/nav-bar';
 import { useState } from 'react';
 
 type Props = {

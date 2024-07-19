@@ -1,6 +1,9 @@
 'use client';
 
-import { authenticate } from '@/shared/actions/user/authenticate';
+import { authenticate } from '@/actions/user/authenticate';
+import { PasswordInput } from '@/components/inputs/password-input';
+import { TextInput } from '@/components/inputs/text-input';
+import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
 const Page = () => {
@@ -18,19 +21,30 @@ const Page = () => {
   };
 
   return (
-    <main className="w-screen h-screen flex">
-      <div className="flex-1 bg-neutral-500"></div>
+    <main className="h-full flex">
       <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-center items-center gap-4">
         <h1 className="text-primary-primary">¡Bienvenido!</h1>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email">Email</label>
-          <input type="text" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="border p-2" />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password">Contraseña</label>
-          <input type="password" value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} className="border p-2" />
+        <div className="w-[334px] flex flex-col gap-2">
+          <TextInput
+            label="Correo electrónico"
+            value={formData.email}
+            onChange={(value) => setFormData({ ...formData, email: value })}
+            placeholder="Correo electrónico"
+          />
+          <PasswordInput
+            label="Contraseña"
+            value={formData.password}
+            onChange={(value) => setFormData({ ...formData, password: value })}
+            placeholder="Contraseña"
+          />
+          <div className="h-[1px] bg-neutral-300"></div>
+          <div className="flex gap-2">
+            <span className="text-xs">¿La olvidaste? No te preocupes.</span>
+            <Link href="/forgot-password" className="inline-flex text-xs text-secondary-secondary font-semibold">
+              Recuperar contraseña
+            </Link>
+          </div>
         </div>
 
         <button className="border h-[40px] px-[32px] rounded-lg">Iniciar Sesión</button>

@@ -1,10 +1,10 @@
 'use client';
 
-import { Checkbox } from '@/shared/components/inputs/checkbox';
-import { PasswordInput } from '@/shared/components/inputs/password-input';
-import { RadioButton } from '@/shared/components/inputs/radio-button';
-import { SlideToggle } from '@/shared/components/inputs/slide-toggle';
-import { TextInput } from '@/shared/components/inputs/text-input';
+import { Checkbox } from '@/components/inputs/checkbox';
+import { PasswordInput } from '@/components/inputs/password-input';
+import { RadioButton } from '@/components/inputs/radio-button';
+import { SlideToggle } from '@/components/inputs/slide-toggle';
+import { TextInput } from '@/components/inputs/text-input';
 import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
