@@ -91,3 +91,7 @@ button {
     line-height: 18px;
     letter-spacing: 0.5px;
 }
+
+*:focus-visible {
+    outline-color: theme(colors.primary.100);
+}

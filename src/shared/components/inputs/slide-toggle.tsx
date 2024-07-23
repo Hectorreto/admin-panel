@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { Colors } from '../../../../tailwind.config';
 
@@ -14,12 +16,12 @@ export const SlideToggle = ({ value, onChange, disabled, label }: Props) => {
       type="button"
       onClick={() => onChange(!value)}
       disabled={disabled}
-      className="flex items-center gap-[4px] justify-start w-fit group outline-none"
+      className="flex items-center gap-[4px] justify-start w-fit group focus-visible:outline-none"
     >
       <div className="relative w-[44px] h-[24px] flex">
         <div
           className={clsx('absolute z-[-3] top-[4px] w-[44px] h-[16px] rounded-[50px] transition-all',
-            value && !disabled && 'bg-secondary-200 group-focus:bg-secondary-300 group-active:bg-secondary-400',
+            value && !disabled && 'bg-secondary-200 group-focus-visible:bg-secondary-300 group-active:bg-secondary-400',
             !value && !disabled && 'bg-neutral-300',
             value && disabled && 'bg-neutral-100',
             !value && disabled && 'bg-neutral-100',
@@ -27,9 +29,9 @@ export const SlideToggle = ({ value, onChange, disabled, label }: Props) => {
         />
         <div
           className={clsx('absolute z-[-2] w-[40px] h-[40px] top-[-8px] rounded-full opacity-0 transition-all',
-            !disabled && 'group-hover:opacity-40 group-focus:opacity-40 group-active:opacity-40',
-            value && !disabled && 'left-[12px] group-hover:bg-secondary-200 group-focus:bg-secondary-300 group-active:bg-secondary-400',
-            !value && !disabled && 'left-[-8px] group-hover:bg-neutral-300 group-focus:bg-neutral-400 group-active:bg-neutral-500',
+            !disabled && 'group-hover:opacity-40 group-focus-visible:opacity-40 group-active:opacity-40',
+            value && !disabled && 'left-[12px] group-hover:bg-secondary-200 group-focus-visible:bg-secondary-300 group-active:bg-secondary-400',
+            !value && !disabled && 'left-[-8px] group-hover:bg-neutral-300 group-focus-visible:bg-neutral-400 group-active:bg-neutral-500',
           )}
         />
         <div

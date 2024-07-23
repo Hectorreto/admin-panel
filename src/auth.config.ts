@@ -20,7 +20,7 @@ export const authConfig = {
       const invalidRoutes = ['/login'];
       const isCurrentRouteValid = !invalidRoutes.some((route) => nextUrl.pathname.startsWith(route));
       if (!isCurrentRouteValid) {
-        return Response.redirect(new URL('/dashboard', nextUrl));
+        return Response.redirect(new URL('/tablero', nextUrl));
       }
 
       return true;

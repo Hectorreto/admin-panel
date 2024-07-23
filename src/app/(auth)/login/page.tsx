@@ -1,8 +1,9 @@
 'use client';
 
 import { authenticate } from '@/actions/user/authenticate';
-import { PasswordInput } from '@/components/inputs/password-input';
-import { TextInput } from '@/components/inputs/text-input';
+import { ButtonPrimary } from '@/components/buttons/button-primary';
+import { InputPassword } from '@/components/inputs/input-password';
+import { InputText } from '@/components/inputs/input-text';
 import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
@@ -26,13 +27,14 @@ const Page = () => {
         <h1 className="text-primary-primary">¡Bienvenido!</h1>
 
         <div className="w-[334px] flex flex-col gap-2">
-          <TextInput
+          <InputText
+            type="email"
             label="Correo electrónico"
             value={formData.email}
             onChange={(value) => setFormData({ ...formData, email: value })}
             placeholder="Correo electrónico"
           />
-          <PasswordInput
+          <InputPassword
             label="Contraseña"
             value={formData.password}
             onChange={(value) => setFormData({ ...formData, password: value })}
@@ -47,7 +49,7 @@ const Page = () => {
           </div>
         </div>
 
-        <button className="border h-[40px] px-[32px] rounded-lg">Iniciar Sesión</button>
+        <ButtonPrimary type="submit">Iniciar Sesión</ButtonPrimary>
       </form>
     </main>
   );

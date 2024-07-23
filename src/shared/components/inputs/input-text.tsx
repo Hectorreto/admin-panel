@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { Colors } from '../../../../tailwind.config';
 
@@ -11,9 +13,10 @@ type Props = {
   helperLink?: React.ReactElement;
   helperIcon?: boolean;
   error?: boolean;
+  type?: string;
 };
 
-export const TextInput = ({ value, onChange, disabled, placeholder, label, error, helperText, helperLink, helperIcon }: Props) => {
+export const InputText = ({ value, onChange, disabled, placeholder, label, error, helperText, helperLink, helperIcon, type = 'text' }: Props) => {
   return (
     <label className="flex flex-col gap-[4px] text-xs">
       <span
@@ -31,16 +34,16 @@ export const TextInput = ({ value, onChange, disabled, placeholder, label, error
       </span>
 
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
         placeholder={placeholder}
-        className={clsx('border rounded h-[44px] px-[16px] outline-none placeholder:text-neutral-600',
+        className={clsx('border rounded h-[44px] px-[16px] focus-visible:outline-none placeholder:text-neutral-600',
           disabled ? (
             'border-neutral-400 bg-neutral-200 text-neutral-700'
           ) : [
-            'hover:border-neutral-600 focus:border-primary-300 focus:shadow-[0_0_0_2px] focus:shadow-primary-100 text-neutral-800',
+            'hover:border-neutral-600 focus-visible:border-primary-300 focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-primary-100 text-neutral-800',
             error && 'border-alert-red',
             !error && 'border-neutral-400',
           ]

@@ -24,9 +24,7 @@ module.exports = {
   ],
   rules: {
     ...customized.rules,
-    '@stylistic/multiline-ternary': ['off',
-    ],
-    '@stylistic/jsx-one-expression-per-line': ['off',
-    ],
+    '@stylistic/multiline-ternary': ['off'],
+    '@stylistic/jsx-one-expression-per-line': ['off'],
   },
 };
