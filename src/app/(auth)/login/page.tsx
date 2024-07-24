@@ -4,6 +4,7 @@ import { authenticate } from '@/actions/user/authenticate';
 import { ButtonPrimary } from '@/components/buttons/button-primary';
 import { InputPassword } from '@/components/inputs/input-password';
 import { InputText } from '@/components/inputs/input-text';
+import { VersioningLegend } from '@/components/versioning-legend/versioning-legend';
 import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
@@ -43,7 +44,7 @@ const Page = () => {
           <div className="h-[1px] bg-neutral-300"></div>
           <div className="flex gap-2">
             <span className="text-xs">¿La olvidaste? No te preocupes.</span>
-            <Link href="/forgot-password" className="inline-flex text-xs text-secondary-secondary font-semibold">
+            <Link href="/recuperar-contrasenia" className="inline-flex text-xs text-secondary-secondary font-semibold">
               Recuperar contraseña
             </Link>
           </div>
@@ -51,6 +52,8 @@ const Page = () => {
 
         <ButtonPrimary type="submit">Iniciar Sesión</ButtonPrimary>
       </form>
+
+      <VersioningLegend />
     </main>
   );
 };

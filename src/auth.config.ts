@@ -10,7 +10,7 @@ export const authConfig = {
 
       // Redirect unauthenticated users to login
       if (!isLoggedIn) {
-        const validRoutes = ['/login'];
+        const validRoutes = ['/login', '/recuperar-contrasenia'];
         const isCurrentRouteValid = validRoutes.some((route) => nextUrl.pathname.startsWith(route));
         if (isCurrentRouteValid) return true;
         return false;

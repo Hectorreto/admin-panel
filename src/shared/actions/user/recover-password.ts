@@ -54,5 +54,5 @@ export const recoverPassword = async (newPassword: string, code: string) => {
     console.error('Failed to sign in', error);
   }
 
-  redirect('/dashboard');
+  redirect('/tablero');
 };
