@@ -10,15 +10,15 @@ export const authConfig = {
 
       // Redirect unauthenticated users to login
       if (!isLoggedIn) {
-        const validRoutes = ['/login', '/recuperar-contrasenia'];
+        const validRoutes = ['/favicon.ico', '/login', '/recuperar-contrasenia'];
         const isCurrentRouteValid = validRoutes.some((route) => nextUrl.pathname.startsWith(route));
         if (isCurrentRouteValid) return true;
         return false;
       }
 
       // Redirect authenticated users to dashboard
-      const invalidRoutes = ['/login'];
-      const isCurrentRouteValid = !invalidRoutes.some((route) => nextUrl.pathname.startsWith(route));
+      const validRoutes = ['/favicon.ico', '/tablero', '/botones', '/inputs', '/componentes', '/ayuda'];
+      const isCurrentRouteValid = validRoutes.some((route) => nextUrl.pathname.startsWith(route));
       if (!isCurrentRouteValid) {
         return Response.redirect(new URL('/tablero', nextUrl));
       }

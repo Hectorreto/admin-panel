@@ -3,7 +3,7 @@ import { Poppins } from 'next/font/google';
 import { ViewTransitions } from 'next-view-transitions';
 import './globals.css';
 
-export const poppins = Poppins({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['700', '600', '400'],
 });

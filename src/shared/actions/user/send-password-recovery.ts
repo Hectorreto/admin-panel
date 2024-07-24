@@ -14,7 +14,7 @@ export const sendPasswordRecovery = async (email: string, utcOffset: number) => 
     z.number().int().min(-12).max(12).parse(utcOffset);
   } catch (error) {
     console.error('Failed to validate fields:', error);
-    return false;
+    return 'El correo electrónico debe ser válido';
   }
 
   // Find user by email
@@ -22,11 +22,11 @@ export const sendPasswordRecovery = async (email: string, utcOffset: number) => 
   try {
     user = await sql`SELECT * FROM users WHERE email = ${email}`.then((result: User[]) => result[0]);
     if (!user) {
-      return false;
+      return 'El correo electrónico no se encuentra registrado';
     }
   } catch (error) {
     console.error('Failed to fetch user by email:', error);
-    return false;
+    return 'El correo electrónico no se encuentra registrado';
   }
 
   // Create password recovery and save it in the database
@@ -42,7 +42,7 @@ export const sendPasswordRecovery = async (email: string, utcOffset: number) => 
     `.then((result: PasswordRecovery[]) => result[0]);
   } catch (error) {
     console.error('Failed to create password recovery:', error);
-    return false;
+    return 'El correo electrónico no se encuentra registrado';
   }
 
   // Send email using nodemailer
@@ -60,10 +60,8 @@ export const sendPasswordRecovery = async (email: string, utcOffset: number) => 
     console.log('Sent password recovery email to:', email);
   } catch (error) {
     console.error('Failed to send email:', error);
-    return false;
+    return 'El correo electrónico no se encuentra registrado';
   }
-
-  return true;
 };
 
 const recoveryTemplate = (email: string, expireAt: Date, passwordRecoveryId: string) => {

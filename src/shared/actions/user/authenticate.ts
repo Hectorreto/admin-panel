@@ -4,10 +4,11 @@ import { signIn } from '../../../auth';
 import { AuthError } from 'next-auth';
 
 export const authenticate = async (
-  formData: FormData,
+  email: string,
+  password: string,
 ) => {
   try {
-    await signIn('credentials', formData);
+    await signIn('credentials', { redirectTo: '/tablero', email, password });
   } catch (error) {
     if (error instanceof AuthError) {
       if (error.message.startsWith('INACTIVE_USER')) {

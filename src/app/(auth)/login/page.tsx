@@ -13,18 +13,28 @@ const Page = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append('email', formData.email);
-    data.append('password', formData.password);
-    authenticate(data);
+
+    try {
+      setLoading(true);
+      const error = await authenticate(formData.email, formData.password);
+      if (error) {
+        setError(error);
+      }
+    } catch (error) {
+      setError('Error al iniciar sesión');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main className="h-full flex">
-      <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-center items-center gap-4">
+      <form onSubmit={handleSubmit} noValidate className="flex-1 flex flex-col justify-center items-center gap-4">
         <h1 className="text-primary-primary">¡Bienvenido!</h1>
 
         <div className="w-[334px] flex flex-col gap-2">
@@ -34,12 +44,15 @@ const Page = () => {
             value={formData.email}
             onChange={(value) => setFormData({ ...formData, email: value })}
             placeholder="Correo electrónico"
+            error={Boolean(error)}
           />
           <InputPassword
             label="Contraseña"
             value={formData.password}
             onChange={(value) => setFormData({ ...formData, password: value })}
             placeholder="Contraseña"
+            error={Boolean(error)}
+            helperText={error}
           />
           <div className="h-[1px] bg-neutral-300"></div>
           <div className="flex gap-2">
@@ -50,7 +63,7 @@ const Page = () => {
           </div>
         </div>
 
-        <ButtonPrimary type="submit">Iniciar Sesión</ButtonPrimary>
+        <ButtonPrimary type="submit" loading={loading}>Iniciar Sesión</ButtonPrimary>
       </form>
 
       <VersioningLegend />

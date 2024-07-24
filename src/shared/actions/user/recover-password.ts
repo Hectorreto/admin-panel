@@ -19,9 +19,9 @@ export const recoverPassword = async (newPassword: string, code: string) => {
     z.string().parse(code);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return error.issues[0].message;
+      return error.issues.map((issue) => issue.message);
     }
-    return 'La contraseña no se ha podido actualizar';
+    return ['La contraseña no se ha podido actualizar'];
   }
 
   let user: User;
@@ -32,7 +32,7 @@ export const recoverPassword = async (newPassword: string, code: string) => {
     const passwordRecovery = await sql`SELECT * FROM password_recovery WHERE id = ${code}`
       .then((result: PasswordRecovery[]) => result[0]);
 
-    if (!passwordRecovery) return 'Enlace de recuperación inválido';
+    if (!passwordRecovery) return ['Enlace de recuperación inválido'];
 
     // Delete the password recovery
     await sql`DELETE FROM password_recovery WHERE id = ${passwordRecovery.id}`;
@@ -41,7 +41,7 @@ export const recoverPassword = async (newPassword: string, code: string) => {
     user = await sql`UPDATE users SET password = ${hashedPassword} WHERE id = ${passwordRecovery.user_id} RETURNING *`
       .then((result: User[]) => result[0]);
   } catch (error) {
-    return 'La contraseña no se ha podido actualizar';
+    return ['La contraseña no se ha podido actualizar'];
   }
 
   try {

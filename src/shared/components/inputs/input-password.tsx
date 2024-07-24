@@ -10,7 +10,7 @@ type Props = {
   disabled?: boolean;
   placeholder: string;
   label?: string;
-  helperText?: string;
+  helperText?: React.ReactElement | string;
   helperLink?: React.ReactElement;
   helperIcon?: boolean;
   error?: boolean;
