@@ -43,6 +43,7 @@ export const Colors = {
   alert: {
     green: '#80D373',
     red: '#960200',
+    red2: '#D01F1D',
   },
   chart: {
     A: '#F8A07B',
