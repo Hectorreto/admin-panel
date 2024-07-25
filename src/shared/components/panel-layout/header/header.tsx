@@ -2,12 +2,14 @@
 
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import { UserIdentification } from './user-identification';
 
 type Props = {
   isOpen: boolean;
+  userName: string;
 };
 
-export const Header = ({ isOpen }: Props) => {
+export const Header = ({ isOpen, userName }: Props) => {
   return (
     <div className="h-[72px]">
       <div className="fixed h-[72px] shadow-xl left-0 right-0"></div>
@@ -18,9 +20,7 @@ export const Header = ({ isOpen }: Props) => {
         )}
       >
         <Item />
-        <div className="whitespace-nowrap">
-          Nombre apellido apellido
-        </div>
+        <UserIdentification userName={userName} />
       </div>
     </div>
   );

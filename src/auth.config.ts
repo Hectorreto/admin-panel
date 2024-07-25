@@ -17,7 +17,7 @@ export const authConfig = {
       }
 
       // Redirect authenticated users to dashboard
-      const validRoutes = ['/favicon.ico', '/tablero', '/botones', '/inputs', '/componentes', '/ayuda'];
+      const validRoutes = ['/favicon.ico', '/tablero', '/botones', '/inputs', '/componentes', '/ayuda', '/cambiar-contrasenia'];
       const isCurrentRouteValid = validRoutes.some((route) => nextUrl.pathname.startsWith(route));
       if (!isCurrentRouteValid) {
         return Response.redirect(new URL('/tablero', nextUrl));
